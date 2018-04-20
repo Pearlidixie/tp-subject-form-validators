@@ -1,13 +1,13 @@
 from django.apps import apps as django_apps
 from django import forms
+from tp_screening.models.subject_screening import SubjectScreening
+from tp_screening.forms.subject_screening_form import SubjectScreeningForm
+from edc_form_validators import FormValidator
 
 
-class SubjectScreeningFormValidator():
+class SubjectScreeningFormValidator(FormValidator):
 
-    subject_screening_model = 'tp_screening.subjectscreening'
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+    def clean(self):
         self.gender = self.cleaned_data.get('gender')
         self.is_citizen = self.cleaned_data.get('is_citizen')
         self.is_married_citizen = self.cleaned_data.get('is_married_citizen')
@@ -17,23 +17,24 @@ class SubjectScreeningFormValidator():
         self.is_minor = self.cleaned_data.get('is_minor')
         self.guardian_available = self.cleaned_data.get('guardian_available')
 
-    @property
-    def subject_screening_model_cls(self):
-        return django_apps.get_model(self.subject_screening_model)
-
-    def clean(self):
-
-        if self.is_citizen == "No" and self.is_married_citizen == "No":
-            raise forms.ValidationError('one has to be a citizen if not must be married to a Motswana and have documents')
+        if (self.cleaned_data.get('is_citizen') == "No" and
+                self.cleaned_data.get('is_married_citizen') == "No"):
+            raise forms.ValidationError(
+                'one has to be a citizen if not must be married to'
+                ' a Motswana and have documents')
 
         if self.is_citizen == "No" and self.is_married_citizen == "Yes":
             if self.marriage_proof == "No":
-                raise forms.ValidationError('one has to be a citizen if not must be married to a Motswana and have documents')
+                raise forms.ValidationError(
+                    'one has to be a citizen if not must be married to'
+                    ' a Motswana and have documents')
 
         if self.is_literate == "No" and self.literate_witness_avail == "No":
-            raise forms.ValidationError('Must be literate or have a witness available')
+            raise forms.ValidationError(
+                 'Must be literate or have a witness available')
 
         if self.is_minor == "Yes" and self.guardian_available == "No":
-            raise forms.ValidationError('Should not be a minor or have a guardian available')
+            raise forms.ValidationError(
+                 'Should not be a minor or have a guardian available')
 
- 
+
