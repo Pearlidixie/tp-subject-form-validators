@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'tp_screening.apps.AppConfig',
+    'tp_subject_form_validators.apps.AppConfig'
 ]
 
 MIDDLEWARE = [
