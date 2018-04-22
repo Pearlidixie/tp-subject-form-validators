@@ -1,7 +1,7 @@
 from django.apps import apps as django_apps
 from django import forms
 from tp_screening.models.subject_screening import SubjectScreening
-from tp_screening.forms.subject_screening_form import SubjectScreeningForm
+
 from edc_form_validators import FormValidator
 
 
