@@ -1,4 +1,5 @@
 git+https://github.com/Pearlidixie/tp_screening.git@develop#egg=tp_screening
+git+https://github.com/Pearlidixie/tp_subject.git@develop#egg=tp_subject
 git+https://github.com/clinicedc/edc-appointment.git@develop#egg=edc_appointment
 git+https://github.com/clinicedc/edc-base.git@develop#egg=edc_base
 git+https://github.com/clinicedc/edc-consent.git@develop#egg=edc_consent
