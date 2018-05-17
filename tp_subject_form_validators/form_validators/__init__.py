@@ -1,1 +1,2 @@
 from .subject_screening import SubjectScreeningFormValidator
+from .demographic import DemographicFormValidator
