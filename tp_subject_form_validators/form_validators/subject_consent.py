@@ -47,5 +47,6 @@ class SubjectConsentFormValidator(FormValidator):
 
         condition = (
             self.cleaned_data.get('is_literate') == NO)
+        print(condition)
         self.required_if_true(
             condition=condition, field_required='witness_name')
