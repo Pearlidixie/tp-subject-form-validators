@@ -2,9 +2,8 @@ from dateutil.relativedelta import relativedelta
 from django import forms
 from django.apps import apps as django_apps
 from django.core.exceptions import ObjectDoesNotExist
-from edc_constants.constants import ABNORMAL
+from edc_constants.constants import ABNORMAL, NO
 from edc_form_validators import FormValidator
-from tp_subject.constants import NO
 
 
 class SubjectConsentFormValidator(FormValidator):
