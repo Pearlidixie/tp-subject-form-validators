@@ -49,3 +49,10 @@ class SubjectConsentFormValidator(FormValidator):
         print(condition)
         self.required_if_true(
             condition=condition, field_required='witness_name')
+
+        if(self.cleaned_data.get('identity') !=
+           self.cleaned_data.get('confirm_identity')):
+            raise forms.ValidationError(
+                {'confirm_identity':
+                 '\'Identity\' must match \'confirm_identity\''})
+
