@@ -45,14 +45,7 @@ class SubjectConsentFormValidator(FormValidator):
                  f'screening. Expected {subject_screening.age_in_years}. '
                  f'Got {screening_age_in_years}.'})
 
-        if subject_screening.mental_status == ABNORMAL and not self.guardian_name:
-            raise forms.ValidationError(
-                {'guardian_name':
-                 'This field is required. Patient mental status at screening is '
-                 f'{subject_screening.mental_status}.'})
-
         condition = (
             self.cleaned_data.get('is_literate') == NO)
-        print(condition)
         self.required_if_true(
             condition=condition, field_required='witness_name')
