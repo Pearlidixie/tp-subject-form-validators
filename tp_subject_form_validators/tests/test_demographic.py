@@ -1,9 +1,6 @@
 from django.test import TestCase
-from tp_screening.mommy_recipes import subjectscreening
-from tp_screening.models import SubjectScreening
 from tp_screening.constants import MALE
 from model_mommy import mommy
-from tp_subject_form_validators.form_validators import subject_screening
 from tp_subject.constants import SINGLE
 
 
