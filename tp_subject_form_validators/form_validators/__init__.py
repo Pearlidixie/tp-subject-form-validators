@@ -1,2 +1,2 @@
-from .subject_screening import SubjectScreeningFormValidator
+from .subject_consent import SubjectConsentFormValidator
 from .demographic import DemographicFormValidator
